@@ -1,0 +1,10 @@
+{% extends "predator/base.html" %}
+{% load url from future %}
+
+{% block body %}
+	{% for p in itens %}
+	<p>
+		<a href="{% url 'predator_predators' p.name %}">{{p}}</a>
+	</p>
+	{% endfor %}
+{% endblock body %}

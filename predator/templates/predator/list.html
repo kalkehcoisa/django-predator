@@ -1,0 +1,37 @@
+{% extends "predator/base.html" %}
+{% load url from future %}
+{% block extrahead %}
+	<script type="text/javascript">
+	$(document).ready(function()
+	{
+		/* begin - paginator */
+		$('select.paginator').change(function()
+		{
+			location.href = $(this).val();
+		});
+		/* end - paginator */
+	});
+	</script>
+{% endblock extrahead %}
+{% block body %}
+	{% for p in itens %}
+	<p>
+		<a href="{% url 'predator_page_detail' p.id %}">{{p.url}}</a>
+	</p>
+	{% endfor %}
+	{% if itens|length > 0 %}
+	<div class="paginator">
+		{% if prev %}
+		<a href="{{prev_url}}">&lt;</a>
+		{% endif %}
+		<select class="paginator">
+			{% for p in paginas %}
+			<option value="{{base_url}}{{p}}"{% if page == p %} selected="selected"{%endif%}>{{p}}</option>
+			{% endfor %}
+		</select>
+		{% if next %}
+		<a href="{{next_url}}">&gt;</a>
+		{% endif %}
+	</div>
+	{% endif %}
+{% endblock body %}

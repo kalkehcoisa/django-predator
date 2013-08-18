@@ -1,0 +1,16 @@
+{% load url from future %}
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.5.1.min.js"></script>
+	{% block extrahead %}
+	{% endblock extrahead %}
+</head>
+<body>
+	<p style="">
+		<a href="{% url 'predator_home' %}">Predator v0.1</a>
+	</p>
+	{% block body %}
+	{% endblock body %}
+</body>
+</html>

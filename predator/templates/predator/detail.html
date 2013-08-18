@@ -1,0 +1,25 @@
+{% extends "predator/base.html" %}
+{% load url from future %}
+{% load uteis %}
+
+{% block body %}
+	<p>
+		<a href="{% url 'predator_predators' page.name %}">{{page}}</a>
+	</p>
+	<p><br/></p>
+	<div>aaaaa
+		{% for p in contents %}
+		<p>Nome: {{p.name}}</p>
+		<div style="padding: 10px 40px;">
+			<p>Conteúdo:</p>
+			{{p.content|unescape}}
+		</div>
+		<div style="padding: 10px 40px;">
+			<p>Imagens:</p>
+			{% for img in p.image_set.all %}
+			<img src="{{img.image.url}}" />
+			{% endfor %}
+		</div>
+		{% endfor %}
+	</div>
+{% endblock body %}
